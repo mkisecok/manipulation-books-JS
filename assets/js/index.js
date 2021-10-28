@@ -27,3 +27,76 @@ const books = [
     img: "https://eloquentjavascript.net/img/cover.jpg"
   }
 ];
+
+const bookElement = document.querySelector('.book-list');
+
+
+ 
+ 
+ const cardBody=document.createElement('div');
+ const h5 = document.createElement('h5')
+ 
+
+for(const book of books)
+{ 
+  const li = document.createElement("li");
+  li.classList.add('card')
+  li.style.width ="18rem"
+  li.style.margin='20px'
+  bookElement.append(li);
+  const image = document.createElement('img');
+  image.classList.add('card-img-top')
+  image.style.height='400px'
+  li.append(image)
+  const cardBody=document.createElement('div');
+  li.append(cardBody);
+  cardBody.classList.add('card-body')
+  const h2 =document.createElement('h2')
+  h2.classList.add('card-title')
+  const h5 = document.createElement('h5');
+  h5.classList.add('card-text')
+  cardBody.append(h2)
+  cardBody.append(h5)
+  const par = document.createElement('a');
+  par.classList.add('btn')
+  par.classList.add('text-end')
+  
+  cardBody.append(par)
+  image.src=book.img;
+  h2.innerText=book.title;
+  h5.innerText=book.author;
+  par.innerText=book.alreadyRead
+  par.href='#'
+
+  
+}
+
+let ourCard= document.querySelectorAll('.card');
+ourCard.forEach(element=>{element.style.border='2px solid black'})
+
+
+
+let ourPar= document.querySelectorAll('.btn');
+ourPar.forEach(element=>{
+
+  if(element.innerText === 'true')
+  {
+    element.style.background='green'
+    element.innerText= 'Read'
+  }
+  else
+  {
+    element.style.background='gray'
+    element.innerText= 'To read'
+  }
+
+  element.style.color='white';
+  element.style.borderRadius='20px';
+  
+  
+  })
+
+  let ourImage= document.querySelectorAll('card-img-top');
+  ourImage.forEach(element=>{element.style.border='5px solid black'})
+
+
