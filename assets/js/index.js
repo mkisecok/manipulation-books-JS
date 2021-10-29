@@ -39,6 +39,7 @@ const bookElement = document.querySelector('.book-list');
 
 for(const book of books)
 { 
+  
   const li = document.createElement("li");
   li.classList.add('card','book')
  
@@ -70,10 +71,13 @@ for(const book of books)
   
   image.src=book.img;
   h2.innerText=book.title;
-  h5.innerText=book.author;
+  
+  h5.innerText=book.author.split(' ').reverse().join(' ');
   par.innerText=book.alreadyRead
   par.href='#'
 
+  
+  
   
 }
 
