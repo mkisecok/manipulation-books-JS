@@ -40,13 +40,13 @@ const bookElement = document.querySelector('.book-list');
 for(const book of books)
 { 
   const li = document.createElement("li");
-  li.classList.add('card')
-  li.style.width ="18rem"
-  li.style.margin='20px'
+  li.classList.add('card','book')
+ 
+  li.style.margin='10px'
   bookElement.append(li);
   const image = document.createElement('img');
-  image.classList.add('card-img-top')
-  image.style.height='400px'
+  image.classList.add('card-img-top', 'book-cover')
+  
   li.append(image)
   const cardBody=document.createElement('div');
   li.append(cardBody);
@@ -57,11 +57,17 @@ for(const book of books)
   h5.classList.add('card-text')
   cardBody.append(h2)
   cardBody.append(h5)
+  const endDiv=document.createElement('div');
+  li.append(endDiv)
   const par = document.createElement('a');
-  par.classList.add('btn')
-  par.classList.add('text-end')
+  par.classList.add('btn','status')
+  endDiv.classList.add('d-flex','justify-content-end')
+  endDiv.append(par)
+  endDiv.style.backgroundColor='lightgray'
+  endDiv.style.position='relative';
+  par.style.margin='10px'
+ 
   
-  cardBody.append(par)
   image.src=book.img;
   h2.innerText=book.title;
   h5.innerText=book.author;
@@ -72,7 +78,7 @@ for(const book of books)
 }
 
 let ourCard= document.querySelectorAll('.card');
-ourCard.forEach(element=>{element.style.border='2px solid black'})
+ourCard.forEach(element=>{element.style.border='1px solid black'})
 
 
 
@@ -96,7 +102,6 @@ ourPar.forEach(element=>{
   
   })
 
-  let ourImage= document.querySelectorAll('card-img-top');
-  ourImage.forEach(element=>{element.style.border='5px solid black'})
+  
 
 
