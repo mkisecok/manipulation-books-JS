@@ -27,14 +27,31 @@ const books = [
     img: "https://eloquentjavascript.net/img/cover.jpg"
   }
 ];
+for (item of books)
+{
+   item.author = item.author.split(' ').reverse().join(' '); 
+}
+books.sort((element1,element2) => {
+  const authorA = element1.author.toUpperCase();
+  const authorB = element2.author.toUpperCase();
+  if(authorA > authorB)
+  {
+      return 1;
+  }
+
+  if(authorA < authorB)
+  {
+      return -1;
+  }
+
+  return 0;
+});
+
+
 
 const bookElement = document.querySelector('.book-list');
-
-
- 
- 
- const cardBody=document.createElement('div');
- const h5 = document.createElement('h5')
+const cardBody=document.createElement('div');
+const h5 = document.createElement('h5')
  
 
 for(const book of books)
@@ -72,14 +89,15 @@ for(const book of books)
   image.src=book.img;
   h2.innerText=book.title;
   
-  h5.innerText=book.author.split(' ').reverse().join(' ');
+  h5.innerText=book.author;
   par.innerText=book.alreadyRead
   par.href='#'
 
   
-  
-  
+
 }
+
+
 
 let ourCard= document.querySelectorAll('.card');
 ourCard.forEach(element=>{element.style.border='1px solid black'})
