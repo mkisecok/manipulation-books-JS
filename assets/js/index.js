@@ -27,3 +27,103 @@ const books = [
     img: "https://eloquentjavascript.net/img/cover.jpg"
   }
 ];
+for (item of books)
+{
+   item.author = item.author.split(' ').reverse().join(' '); 
+}
+books.sort((element1,element2) => {
+  const authorA = element1.author.toUpperCase();
+  const authorB = element2.author.toUpperCase();
+  if(authorA > authorB)
+  {
+      return 1;
+  }
+
+  if(authorA < authorB)
+  {
+      return -1;
+  }
+
+  return 0;
+});
+
+
+
+const bookElement = document.querySelector('.book-list');
+const cardBody=document.createElement('div');
+const h5 = document.createElement('h5')
+ 
+
+for(const book of books)
+{ 
+  
+  const li = document.createElement("li");
+  li.classList.add('card','book')
+ 
+  li.style.margin='10px'
+  bookElement.append(li);
+  const image = document.createElement('img');
+  image.classList.add('card-img-top', 'book-cover')
+  
+  li.append(image)
+  const cardBody=document.createElement('div');
+  li.append(cardBody);
+  cardBody.classList.add('card-body')
+  const h2 =document.createElement('h2')
+  h2.classList.add('card-title')
+  const h5 = document.createElement('h5');
+  h5.classList.add('card-text')
+  cardBody.append(h2)
+  cardBody.append(h5)
+  const endDiv=document.createElement('div');
+  li.append(endDiv)
+  const par = document.createElement('a');
+  par.classList.add('btn','status')
+  endDiv.classList.add('d-flex','justify-content-end')
+  endDiv.append(par)
+  endDiv.style.backgroundColor='lightgray'
+  endDiv.style.position='relative';
+  par.style.margin='10px'
+ 
+  
+  image.src=book.img;
+  h2.innerText=book.title;
+  
+  h5.innerText=book.author;
+  par.innerText=book.alreadyRead
+  par.href='#'
+
+  
+
+}
+
+
+
+let ourCard= document.querySelectorAll('.card');
+ourCard.forEach(element=>{element.style.border='1px solid black'})
+
+
+
+let ourPar= document.querySelectorAll('.btn');
+ourPar.forEach(element=>{
+
+  if(element.innerText === 'true')
+  {
+    element.style.background='green'
+    element.innerText= 'Read'
+  }
+  else
+  {
+    element.style.background='gray'
+    element.innerText= 'To read'
+  }
+
+  element.style.color='white';
+  element.style.borderRadius='20px';
+  
+  
+  })
+
+  
+
+
